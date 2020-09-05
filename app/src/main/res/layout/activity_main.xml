@@ -390,9 +390,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cust_record_wrapper"
-                app:tabIndicatorGravity="center"
-                app:tabIndicatorHeight="30dp"
-                app:tabPaddingStart="10dp" />
+                app:tabIndicatorGravity="bottom"
+                app:tabIndicatorColor="#3D368E"
+                app:tabIndicatorHeight="2dp"
+                app:tabPaddingStart="40dp" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
@@ -410,6 +411,7 @@
 
 
 
+
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="60dp"
@@ -418,53 +420,30 @@
 
        app:layout_constraintBottom_toBottomOf="parent">
 
-      <ImageButton
-          android:id="@+id/home"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/ic_baseline_view_quilt_24"
+
+      <com.google.android.material.tabs.TabLayout
+          android:id="@+id/tab2s"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="0dp"
+          android:background="@color/whiteColor"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/viewPage2r"
+          app:tabIndicatorGravity="center"
+          app:tabIndicatorHeight="30dp"
+          app:tabPaddingStart="10dp" />
+
+      <androidx.viewpager.widget.ViewPager
+          android:id="@+id/viewPage2r"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#eee"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
-      <ImageButton
-          android:id="@+id/loan_active"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_marginStart="10dp"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/ic_baseline_list_alt_24"
-          android:translationZ="0dp"
-          app:layout_constraintStart_toEndOf="@+id/home"
-          app:layout_constraintTop_toTopOf="parent" />
 
-      <ImageButton
-          android:id="@+id/loan_request"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          app:layout_constraintStart_toEndOf="@+id/loan_active"
-          app:layout_constraintTop_toTopOf="parent" />
-
-      <ImageButton
-          android:id="@+id/remit_cash"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          app:layout_constraintStart_toEndOf="@+id/loan_request"
-          app:layout_constraintTop_toTopOf="parent" />
-
-      <ImageButton
-          android:id="@+id/setting"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/ic_baseline_settings_24"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 
