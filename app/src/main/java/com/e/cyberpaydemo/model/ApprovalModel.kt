@@ -21,8 +21,7 @@ class ApprovalModel {
             approvalModel.amount=obj.getString("amount")
             approvalModel.name = obj.getString("name")
             approvalModel.time= obj.getString("createdAt")
-//            approvalModel.isLoanApproved=obj.getString("isLoanApproved")
-
+            approvalModel.isLoanApproved=obj.getString("isLoanApproved")
 
             return approvalModel
         }

@@ -26,7 +26,7 @@ class LoanApproved : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
-            loanApprovalAdapter = LoanApprovalAdapter()
+            loanApprovalAdapter = LoanApprovalAdapter("Approved")
         }
     }
 
@@ -62,10 +62,7 @@ class LoanApproved : Fragment() {
                 loanApprovalAdapter!!.setData(result.getDataList() as  ArrayList<ApprovalModel>)
 
             }
-//            if (result.isNotEmpty()){
-//
-//
-//            }
+
         })
     }
     companion object {

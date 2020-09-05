@@ -9,7 +9,7 @@ import com.e.cyberpaydemo.model.ApprovalModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.approval_holder.view.*
 
-class LoanApprovalAdapter:RecyclerView.Adapter<LoanApprovalAdapter.VHClass>() {
+class LoanApprovalAdapter(private var loanStatus:String):RecyclerView.Adapter<LoanApprovalAdapter.VHClass>() {
 
     private var loanApprovedList=ArrayList<ApprovalModel>()
 
@@ -31,16 +31,27 @@ class LoanApprovalAdapter:RecyclerView.Adapter<LoanApprovalAdapter.VHClass>() {
 
     override fun onBindViewHolder(holder: LoanApprovalAdapter.VHClass, position: Int) {
 
-        holder.bindView(loanApprovedList[position])
+        holder.bindView(loanApprovedList[position], loanStatus)
     }
 
     class VHClass(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        fun bindView(approvalModel: ApprovalModel){
-            itemView.staff_name.text = approvalModel.name
-            itemView.time.text= approvalModel.time
-            itemView.amount.text= "N${approvalModel.amount}"
-            Picasso.get().load(approvalModel.avatar).into(itemView.circleImageView)
+        fun bindView(approvalModel: ApprovalModel, loanStatus: String){
+
+            if (loanStatus=="Pending" &&approvalModel.isLoanApproved == "false"){
+                    itemView.staff_name.text = approvalModel.name
+                    itemView.time.text= approvalModel.time
+                    itemView.amount.text= "N${approvalModel.amount}"
+                    Picasso.get().load(approvalModel.avatar).into(itemView.circleImageView)
+
+            } else if (loanStatus=="Approved"&&approvalModel.isLoanApproved=="true"){
+                itemView.staff_name.text = approvalModel.name
+                itemView.time.text= approvalModel.time
+                itemView.amount.text= "N${approvalModel.amount}"
+                Picasso.get().load(approvalModel.avatar).into(itemView.circleImageView)
+            }
+
+
         }
     }
 }
