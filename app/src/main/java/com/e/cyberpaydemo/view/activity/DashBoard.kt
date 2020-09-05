@@ -1,5 +1,6 @@
 package com.e.cyberpaydemo.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import com.e.cyberpaydemo.R
 import com.e.cyberpaydemo.view.fragment.dashboard.LoanApproved
 import com.e.cyberpaydemo.view.fragment.dashboard.PendingLoan
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 
 class DashBoard : AppCompatActivity() {
 
@@ -20,10 +22,19 @@ class DashBoard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        load_request_wrapper.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    LoanApplication::class.java
+                )
+            )
+        }
+
 
         viewPager = findViewById(R.id.viewPager)
         sectionViewPageAdapter = SectionViewPageAdapter(supportFragmentManager)
-        val tabLayout:TabLayout = findViewById(R.id.tabs)
+        val tabLayout: TabLayout = findViewById(R.id.tabs)
 
         val tab1 = tabLayout.newTab()
         tab1.text = "Approved"

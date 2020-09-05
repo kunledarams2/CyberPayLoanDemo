@@ -409,17 +409,12 @@
 
    </LinearLayout>
 
-
-
-
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
        android:background="@color/whiteColor"
-
        app:layout_constraintBottom_toBottomOf="parent">
-
 
       <com.google.android.material.tabs.TabLayout
           android:id="@+id/tab2s"
@@ -437,8 +432,9 @@
       <androidx.viewpager.widget.ViewPager
           android:id="@+id/viewPage2r"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="0dp"
           android:background="#eee"
+          android:visibility="gone"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
