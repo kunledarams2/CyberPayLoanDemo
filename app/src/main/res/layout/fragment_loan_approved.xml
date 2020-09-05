@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.fragment.dashboard.LoanApproved">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/loan_recy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/approval_holder"/>

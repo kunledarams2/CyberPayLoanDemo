@@ -1,26 +1,52 @@
 package com.e.cyberpaydemo.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.android.volley.Response
 import com.e.cyberpaydemo.api.MyVolleyRequest
-import com.e.cyberpaydemo.callback.IVolleyResponse
+import com.e.cyberpaydemo.api.ResultList
 import com.e.cyberpaydemo.model.ApprovalModel
-import org.json.JSONObject
+import org.json.JSONArray
 
-class LoanApprovedRepository(private val context: Context):IVolleyResponse {
+class LoanApprovedRepository(private val context: Context) {
 
-    fun fetchLoanApproved(){
-        val myVolleyRequest= MyVolleyRequest.getInstance(context, this)
+    fun fetchLoanApproved(): LiveData<ResultList<ApprovalModel>> {
+        val url = "http://5e8199e5c130270016a372d2.mockapi.io/api/v1/loans"
+        val data = MutableLiveData<ResultList<ApprovalModel>>()
+        val result = ResultList<ApprovalModel>()
 
-        myVolleyRequest.getRequest("", null)
+        MyVolleyRequest.getInstance(context).get(url, null,
+            Response.Listener { response ->
+                log(response)
 
+                    val obj = JSONArray(response)
+//                    result.add(ApprovalModel.parse(obj))
+                    val dataList = ArrayList<ApprovalModel>()
+                    if (obj.length() > 0){
+                        for (i in 0 until obj.length()) {
+                            val dataObj = obj.getJSONObject(i)
+                            dataList.add(ApprovalModel.parse(dataObj))
+//                            log(dataList.toString())
 
+                        }
+                        result.setDataList(dataList)
+                        log(result.getDataList()!!.size.toString())
+                        data.value = result
+                    }
+
+             data.value=result
+            },
+            Response.ErrorListener {
+
+            })
+
+        return data
     }
 
-    override fun iVolleyResponse(response: String) {
-        val liveData:LiveData<List<ApprovalModel>>
-       val jsonObject = JSONObject(response)
-
+    fun log(mgs: String) {
+        Log.d(LoanApprovedRepository::class.simpleName, "-_--_--_-_--_-_-$mgs")
     }
 
 

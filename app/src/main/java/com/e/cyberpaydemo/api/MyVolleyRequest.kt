@@ -105,14 +105,7 @@ class MyVolleyRequest {
             override fun getHeaders(): Map<String, String> {
                 val map: MutableMap<String, String> = HashMap<String, String>()
                 map["Accept"] = "application/json"
-                /*  if (API.isLoggedIn(mApi.getContext())) {
-                      val credentials: Map<String, String> =
-                          API.getCredentials(mApi.getContext())
-                      val token = credentials[API.SESSION_ID]
-                      map["sessionid"] = token
-                      //map.put("Authorization", token);
-                      Log.d("SESSION_ID", token)
-                  }*/
+
                 map["Content-Type"] = "application/x-www-form-urlencoded"
                 return map
             }
