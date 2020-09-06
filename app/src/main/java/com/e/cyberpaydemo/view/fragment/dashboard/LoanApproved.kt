@@ -26,7 +26,7 @@ class LoanApproved : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
-            loanApprovalAdapter = LoanApprovalAdapter("Approved")
+            loanApprovalAdapter = LoanApprovalAdapter()
         }
     }
 
@@ -50,6 +50,7 @@ class LoanApproved : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         loanApprovalViewModel = ViewModelProviders.of(this)[LoanApprovalViewModel::class.java]
+        loanApprovalViewModel!!.fetchLoan("true")
         observeLoadVM(loanApprovalViewModel!!)
 
     }

@@ -12,7 +12,7 @@ import org.json.JSONArray
 
 class LoanApprovedRepository(private val context: Context) {
 
-    fun fetchLoanApproved(): LiveData<ResultList<ApprovalModel>> {
+    fun fetchLoanApproved(loanStatus:String): LiveData<ResultList<ApprovalModel>> {
         val url = "http://5e8199e5c130270016a372d2.mockapi.io/api/v1/loans"
         val data = MutableLiveData<ResultList<ApprovalModel>>()
         val result = ResultList<ApprovalModel>()
@@ -27,9 +27,11 @@ class LoanApprovedRepository(private val context: Context) {
                     if (obj.length() > 0){
                         for (i in 0 until obj.length()) {
                             val dataObj = obj.getJSONObject(i)
-                            dataList.add(ApprovalModel.parse(dataObj))
-//                            log(dataList.toString())
-
+                            if (loanStatus=="true" && dataObj.getBoolean("isLoanApproved")){
+                                dataList.add(ApprovalModel.parse(dataObj))
+                            } else if (loanStatus=="false" && !dataObj.getBoolean("isLoanApproved")){
+                                dataList.add(ApprovalModel.parse(dataObj))
+                            }
                         }
                         result.setDataList(dataList)
                         log(result.getDataList()!!.size.toString())

@@ -24,7 +24,7 @@ class PendingLoan : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            loanApprovalAdapter = LoanApprovalAdapter("Pending")
+            loanApprovalAdapter = LoanApprovalAdapter()
 
 
         }
@@ -51,6 +51,7 @@ class PendingLoan : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         loanApprovalViewModel = ViewModelProviders.of(this)[LoanApprovalViewModel::class.java]
+        loanApprovalViewModel!!.fetchLoan("false")
         observeLoadVM(loanApprovalViewModel!!)
 
     }

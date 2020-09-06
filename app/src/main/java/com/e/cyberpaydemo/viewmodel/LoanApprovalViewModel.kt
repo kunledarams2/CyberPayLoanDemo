@@ -11,13 +11,19 @@ import com.e.cyberpaydemo.repository.LoanApprovedRepository
 class LoanApprovalViewModel(application: Application) : AndroidViewModel(application) {
 
     val mApplication=application;
-    private var  mediatorLiveData : MediatorLiveData<ResultList<ApprovalModel>>?=null
-   private var liveData: LiveData<ResultList<ApprovalModel>>?=null
+    private var  mediatorLiveData = MediatorLiveData<ResultList<ApprovalModel>>()
+   var liveData: LiveData<ResultList<ApprovalModel>>?=null
 
     init {
-        mediatorLiveData= MediatorLiveData()
-        liveData = LoanApprovedRepository(mApplication.applicationContext).fetchLoanApproved()
-        mediatorLiveData!!.addSource(liveData!!){values:ResultList<ApprovalModel>?-> mediatorLiveData!!.value=values}
+        liveData= mediatorLiveData
+        mediatorLiveData.addSource(liveData!!){values:ResultList<ApprovalModel>?-> mediatorLiveData.value=values}
+    }
+
+    fun fetchLoan(loanStatus:String){
+        mediatorLiveData.removeSource(liveData!!)
+        liveData = LoanApprovedRepository(mApplication.applicationContext).fetchLoanApproved(loanStatus)
+        mediatorLiveData.addSource(liveData!!){values:ResultList<ApprovalModel>?-> mediatorLiveData.value=values}
+
     }
 
     fun getMediatorLiveData():MediatorLiveData<ResultList<ApprovalModel>>?{
