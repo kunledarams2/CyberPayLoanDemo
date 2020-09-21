@@ -38,18 +38,11 @@ class LoanApprovalAdapter():RecyclerView.Adapter<LoanApprovalAdapter.VHClass>() 
 
         fun bindView(approvalModel: ApprovalModel){
 
-//            if (approvalModel.isLoanApproved == "false"){
                     itemView.staff_name.text = approvalModel.name
                     itemView.time.text= approvalModel.time
                     itemView.amount.text= "N${approvalModel.amount}"
                     Picasso.get().load(approvalModel.avatar).into(itemView.circleImageView)
 
-//            } else if (loanStatus=="Approved"&&approvalModel.isLoanApproved=="true"){
-//                itemView.staff_name.text = approvalModel.name
-//                itemView.time.text= approvalModel.time
-//                itemView.amount.text= "N${approvalModel.amount}"
-//                Picasso.get().load(approvalModel.avatar).into(itemView.circleImageView)
-//            }
 
 
         }

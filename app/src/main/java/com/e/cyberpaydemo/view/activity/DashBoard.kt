@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.cyberspace.cyberpaysdk.CyberpaySdk
+import com.cyberspace.cyberpaysdk.enums.Mode
 import com.e.cyberpaydemo.R
 import com.e.cyberpaydemo.view.fragment.dashboard.LoanApproved
 import com.e.cyberpaydemo.view.fragment.dashboard.PendingLoan
@@ -21,6 +23,9 @@ class DashBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        CyberpaySdk.initialiseSdk("d5355204f9cf495f853c8f8d26ada19b", Mode.Debug)
+
 
         load_request_wrapper.setOnClickListener {
             startActivity(

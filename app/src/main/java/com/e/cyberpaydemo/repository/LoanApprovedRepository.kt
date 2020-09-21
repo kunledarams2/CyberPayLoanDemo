@@ -47,7 +47,7 @@ class LoanApprovedRepository(private val context: Context) {
         return data
     }
 
-    fun log(mgs: String) {
+    private fun log(mgs: String) {
         Log.d(LoanApprovedRepository::class.simpleName, "-_--_--_-_--_-_-$mgs")
     }
 

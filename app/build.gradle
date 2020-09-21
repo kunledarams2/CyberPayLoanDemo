@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -47,6 +52,8 @@ dependencies {
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
 
     implementation 'com.android.volley:volley:1.1.0'
+
+    implementation 'com.github.cyberspace-ltd:cyberpay-androidx:0.2.9'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
