@@ -13,8 +13,11 @@ import com.e.cyberpaydemo.R
 import com.e.cyberpaydemo.view.fragment.dashboard.LoanApproved
 import com.e.cyberpaydemo.view.fragment.dashboard.PendingLoan
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+@AndroidEntryPoint
 class DashBoard : AppCompatActivity() {
 
    var viewPager :ViewPager?=null
@@ -24,7 +27,6 @@ class DashBoard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        CyberpaySdk.initialiseSdk("d5355204f9cf495f853c8f8d26ada19b", Mode.Debug)
 
 
         load_request_wrapper.setOnClickListener {

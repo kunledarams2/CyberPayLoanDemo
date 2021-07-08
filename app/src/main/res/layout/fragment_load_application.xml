@@ -168,31 +168,29 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/calculat_loan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:id="@+id/calculat_loan"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/deep_blue_rectangle"
         android:text="Next"
         android:textAllCaps="false"
         android:textColor="@color/whiteColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_wrapper" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:layout_width="5dp"
         android:layout_height="0dp"
 
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="100dp"
         android:background="@color/greenColor"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/form_wrapper"
         app:layout_constraintEnd_toStartOf="@+id/form_wrapper"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29000002" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
